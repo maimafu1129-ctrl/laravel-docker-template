@@ -10,7 +10,10 @@ class TodoController extends Controller
      public function index()
     {
         $todo = new Todo();
+        //todosテーブル全てのデータを取得する　sql文でいうとselect * from todos;と同じ意味
         $todos = $todo->all();
+        //  第一関数index.blade.phpを指定、todosは、View側で使う変数名
+        //  　第二関数　Controllerで取得したデータをViewに渡す　Controller側に入っている実際のデータ
         return view('todo.index', ['todos' => $todos]);
     }
     
