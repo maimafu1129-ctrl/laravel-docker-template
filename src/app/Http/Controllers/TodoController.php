@@ -3,9 +3,9 @@
 // このファイルが「App\Http\Controllersというフォルダ配下にある」位置情報定義
 namespace App\Http\Controllers;
 // データベースのtodosテーブルのやり取りを担当するtodoモデルを呼び出して使う宣言
-use App\Todo;
+use App\Http\Requests\TodoRequest;
 // フォームから送信されてきたデータ（リクエストデータ）を取り扱うための **Request** **クラス**を読み込む
-use Illuminate\Http\Request;
+use App\Todo;
 
 class TodoController extends Controller
 {
@@ -36,7 +36,7 @@ class TodoController extends Controller
 
 
 //Collectionの便利なメソッドを利用できる状態　複数のデータをまとめ、便利なメソッドで操作できる仕組み
-    public function store(Request $request)
+    public function store(TodoRequest $request)
 {
     // フォームで送信されたすべての入力値を連想配列　検索・絞り込み・並び替えなどのメソッドが用意
     $inputs = $request->all(); 
@@ -61,13 +61,14 @@ public function show($id)
         $this->todo = $todo;
 }
 
-    public function update(Request $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
+    public function update(TodoRequest $request, $id) // 第1引数: リクエスト情報の取得　第2引数: ルートパラメータの取得
 {
     // TODO: リクエストされた値を取得
     $inputs = $request->all();
     $todo = $this->todo->find($id);
     // TODO: 更新したい値の代入とUPDATE文の実行
-    $todo-> fill($inputs)->save();
+    $todo->fill($inputs);
+    $todo->save();
     return redirect()->route('todo.show', $todo->id); 
 }
 }
