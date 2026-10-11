@@ -1,3 +1,4 @@
+<!-- layouts/base.blade.php ＝ 家の基本構造 -->
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -26,6 +27,7 @@
     </nav>
     <main class="py-4">
       <div class="container">
+        <!-- 子画面の内容を表示する場所を指定する -->
         @yield('content')
       </div>
     </main>

@@ -1,4 +1,6 @@
-        @extends('layouts.base')
+       <!-- 共通化した部分を記載したファイル -->
+       @extends('layouts.base')
+       <!--  @yield('content') -->
         @section('content')
         <div class="row justify-content-center">
           <div class="col-md-8">
