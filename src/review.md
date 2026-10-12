@@ -4,6 +4,7 @@
 
 ### Todoモデルのallメソッドで実行しているSQLは何か
 todoController.php 13行目 $todos = $todo->all();にてtodosテーブル全てのデータを取得するSQL
+SELECT * FROM todos WHERE deleted_at IS NULL;
 
 
 ### Todoモデルのallメソッドの返り値は何か
